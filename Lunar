@@ -1,4 +1,4 @@
--- stop skidding LMAO
+
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
@@ -10813,4 +10813,42 @@ Function = function(Callback)
         old = nil
     end
 end
+})
+
+	local SkyTP = {["Enabled"] = false}
+SkyTP = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "SkyTp (Remade)",
+		["HoverText"] = "tps u up into the sky",
+		["Function"] = function(v)
+		betterjump = v
+		if betterjump then
+		lplr.Character.HumanoidRootPart.CFrame = lplr.Character.HumanoidRootPart.CFrame + Vector3.new(0, STPP["Value"], 0)
+                Workspace.Gravity = 0
+                wait(STPAD["Value"]) 
+                Workspace.Gravity = STPD["Value"]
+		else
+		Workspace.Gravity = 196.2
+		end
+	end
+})
+STPP = SkyTP.CreateSlider({
+    ["Name"] = "Position",
+    ["Min"] = 100,
+    ["Max"] = 1000,
+    ["Function"] = function(val) end,
+    ["Default"] = 1000
+})
+STPAD = SkyTP.CreateSlider({
+    ["Name"] = "Delay",
+    ["Min"] = 0,
+    ["Max"] = 3,
+    ["Function"] = function(val) end,
+    ["Default"] = 3
+})
+STPD = SkyTP.CreateSlider({
+    ["Name"] = "Gravity",
+    ["Min"] = 0,
+    ["Max"] = 196,
+    ["Function"] = function(val) end,
+    ["Default"] = 196
 })
