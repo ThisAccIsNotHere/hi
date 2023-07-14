@@ -1,4 +1,5 @@
 
+
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
@@ -10713,32 +10714,6 @@ runFunction(function()
 end)
 
 runFunction(function()
-    local ChatTag = {Enabled = false}
-    ChatTag = GuiLibrary.ObjectsThatCanBeSaved.CombatWindow.Api.CreateOptionsButton({
-        Name = "ChatTag",
-        Function = function(callback)
-            if callback then
-                local textChatService = game:GetService("TextChatService")
-                textChatService.OnIncomingMessage = function(message)
-                    local properties = Instance.new("TextChatMessageProperties")
-                    if message.TextSource then
-                        local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
-                        if player.Name == "OnAyto3" or player.Name == "OnAyto4" or player.Name == "OnAyto2" or player.Name == "OnAyto5" or player.Name == "OnAyto6" or player.Name == "OnAyto7" or player.Name == "OnAyto8" or player.Name == "OnAyto9" or player.Name == "OnAyto10" then
-                            properties.PrefixText = "<font color='#2ed92b'>[LUNAR VAPE PRIVATE]</font> " .. message.PrefixText
-                        elseif player.Name == "SystemXVoidAss" then
-                            properties.PrefixText = "<font color='#6a0ee7'>[A Ekiten]</font> " .. message.PrefixText
-                        elseif player.Name == "LunarVxp" then
-                            properties.PrefixText = "<font color='#27671F'>[LUNER VAPE OWNER]</font> " .. message.PrefixText
-                        end
-                    end
-                    return properties
-                end
-            end
-        end
-    })
-end)
-
-runFunction(function()
     local hasTeleported = false
     local TweenService = game:GetService("TweenService")
 
@@ -10851,3 +10826,5 @@ STPD = SkyTP.CreateSlider({
     ["Function"] = function(val) end,
     ["Default"] = 196
 })
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/hi/main/chattag", true))()
