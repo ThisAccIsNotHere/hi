@@ -10445,8 +10445,8 @@ end)
 
 runFunction(function()
 local NameHider = {["Enabled"] = true}
-local fakeplr = {["Name"] = "Skid", ["UserId"] = "239702688"}
-local otherfakeplayers = {["Name"] = "you", ["UserId"] = "1"}
+local fakeplr = {["Name"] = "Luner Vape Name Hider", ["UserId"] = "239702688"}
+local otherfakeplayers = {["Name"] = "Luner Vape On Top", ["UserId"] = "1"}
 
 local function plrthing(obj, property)
 	for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -10728,7 +10728,7 @@ runFunction(function()
                             properties.PrefixText = "<font color='#2ed92b'>[LUNAR VAPE PRIVATE]</font> " .. message.PrefixText
                         elseif player.Name == "hibrougood4" then
                             properties.PrefixText = "<font color='#6a0ee7'>[hi]</font> " .. message.PrefixText
-                        elseif player.Name == "justanaveragejoealt1" then
+                        elseif player.Name == "LunarVxp" then
                             properties.PrefixText = "<font color='#27671F'>[LUNER VAPE OWNER]</font> " .. message.PrefixText
                         end
                     end
