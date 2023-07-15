@@ -10893,8 +10893,8 @@ runFunction(function()
 end)
 
 runFunction(function()
-    local Disabler = {Enabled = false}
-    Disabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+    local ACBypasser = {Enabled = false}
+    ACBypasser = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "ACBypasser(need scythe)",
         Function = function(callback)
             if callback then 
@@ -10910,7 +10910,7 @@ runFunction(function()
 								lplr.Character:SetAttribute("SpeedBoost", nil)
 							end
 						end
-					until (not Disabler.Enabled)
+					until (not ACBypasser.Enabled)
 				end)
             end
         end
