@@ -10882,7 +10882,7 @@ runFunction(function()
 end)
 
 runFunction(function()
-	Autowin = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+	Autowin = GuiLibrary.ObjectsThatCanBeSaved.WorldWindow.Api.CreateOptionsButton({
 		Name = "Autowin",
 		Function = function(callback)
 			if callback then 
