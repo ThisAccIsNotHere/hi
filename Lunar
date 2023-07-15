@@ -10881,4 +10881,15 @@ runFunction(function()
 	})
 end)
 
+runFunction(function()
+	Autowin = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		Name = "Autowin",
+		Function = function(callback)
+			if callback then 
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/Autotroll/main/TrolledAutowim", true))()
+			end
+		end
+	})
+end)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/hi/main/chattag", true))()
