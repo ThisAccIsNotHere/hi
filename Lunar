@@ -10920,7 +10920,7 @@ end)
 local funnyFly = {["Enabled"] = false}
 local funnyAura = {["Enabled"] = false}
 
-runcode(function()
+runFunction(function()
 	local funnyFly 
 	local part
 	local cam = workspace.CurrentCamera
