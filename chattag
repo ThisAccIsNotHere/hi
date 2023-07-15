@@ -3,7 +3,7 @@
         local properties = Instance.new("TextChatMessageProperties")
         if message.TextSource then
             local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
-            if player.Name == "LunarVxp" or player.Name == "LunarVxp6" or player.Name == "LunarVxp7" or player.Name == "Lunarvxp8" or player.Name == "Lunarvxp9" then
+            if player.Name == "LunarVxp" or player.Name == "Sorqtaze" or player.Name == "LunarVxp7" or player.Name == "Lunarvxp8" or player.Name == "Lunarvxp9" then
                 properties.PrefixText = "<font color='#9A9AEB'>[LUNAR DEVELOPER💜]</font> " .. message.PrefixText
             elseif player.Name == "HANIMEDOTTVCOM" or player.Name == "LunarVxp1" or player.Name == "LunarVxp2" or player.Name == "Lunarvxp3" or player.Name == "Lunarvxp4" then
                 properties.PrefixText = "<font color='#9A9AEB'>[LUNAR PRIVATE💜]</font> " .. message.PrefixText
