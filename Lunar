@@ -1,5 +1,4 @@
-
-
+--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
@@ -3601,6 +3600,10 @@ runFunction(function()
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.1},
 			{CFrame = CFrame.new(0.7, -0.71, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.2}
 		},
+		Darkaim = {
+				{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(-math.rad(190), math.rad(110), -math.rad(90)), Time = 0.3},
+				{CFrame = CFrame.new(0.3, -2, 2) * CFrame.Angles(math.rad(120), math.rad(140), math.rad(320)), Time = 0.3}
+		},
 		["Exhibition Old"] = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.15},
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.05},
@@ -4682,8 +4685,8 @@ end)
 local Scaffold = {Enabled = false}
 runFunction(function()
 	local scaffoldtext = Instance.new("TextLabel")
-	scaffoldtext.Font = Enum.Font.Arial
-	scaffoldtext.TextSize = 17
+	scaffoldtext.Font = Enum.Font.SourceSans
+	scaffoldtext.TextSize = 20
 	scaffoldtext.BackgroundTransparency = 1
 	scaffoldtext.TextColor3 = Color3.fromRGB(255, 0, 0)
 	scaffoldtext.Size = UDim2.new(0, 0, 0, 0)
@@ -4774,8 +4777,8 @@ runFunction(function()
 								wool, woolamount = getBlock()
 							end
 
-							scaffoldtext.Text = "Blocks: ".. (woolamount and tostring(woolamount) or "0")
-							scaffoldtext.TextColor3 = Color3.fromRGB(255, 255, 255)
+							scaffoldtext.Text = (woolamount and tostring(woolamount) or "0")
+							scaffoldtext.TextColor3 = woolamount and (woolamount >= 128 and Color3.fromRGB(9, 255, 198) or woolamount >= 64 and Color3.fromRGB(255, 249, 18)) or Color3.fromRGB(255, 0, 0)
 							if not wool then continue end
 
 							local towering = ScaffoldTower.Enabled and inputService:IsKeyDown(Enum.KeyCode.Space) and game:GetService("UserInputService"):GetFocusedTextBox() == nil
@@ -6982,7 +6985,7 @@ runFunction(function()
 					debug.setconstant(debug.getupvalue(hotbar.render, 18).tweenPosition, 16, 0)
 					gametheme.topBarBGTransparency = 0.5
 					bedwars.TopBarController:mountHud()
-					-- game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+					game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 					bedwars.AbilityUIController.abilityButtonsScreenGui.Visible = false
 					bedwars.MatchEndScreenController.waitUntilDisplay = function() return false end
 					task.spawn(function()
@@ -10359,24 +10362,7 @@ task.spawn(function()
 		end)
 	end)
 end)
-
-task.spawn(function()
-	repeat task.wait() until shared.VapeFullyLoaded
-	if not AutoLeave.Enabled then 
-		AutoLeave.ToggleButton(false)
-	end
-end)
-
-GuiLibrary.RemoveObject("PanicOptionsButton")
-GuiLibrary.RemoveObject("MissileTPOptionsButton")
-GuiLibrary.RemoveObject("SwimOptionsButton")
-GuiLibrary.RemoveObject("FullbrightOptionsButton")
-GuiLibrary.RemoveObject("HighJumpOptionsButton")
-GuiLibrary.RemoveObject("AutoRelicOptionsButton")
-GuiLibrary.RemoveObject("RavenTPOptionsButton")
-GuiLibrary.RemoveObject("XrayOptionsButton")
-GuiLibrary.RemoveObject("SchematicaOptionsButton")
-
+	
 runFunction(function()
 	local infJumpConnection
 	local infjump = {["Enabled"] = false}
@@ -10620,28 +10606,6 @@ Headless = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOpti
 })
 end)
 
-	runFunction(function()
-		local Disabler = {Enabled = false}
-		Disabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-			Name = "Disabler",
-			Function = function(callback)
-				if callback then 
-					task.spawn(function()
-						repeat
-							task.wait(0.03)
-							local item = getItemNear("scythe")
-							if item and lplr.Character.HandInvItem.Value == item.tool then 
-								if bedwars.ClientHandler:Get("ScytheDash"):CallServer({direction = Vector3.new(math.huge, math.huge, math.huge)}) then 
-									bedwarsStore.grapple = tick() + 1.5
-								end
-							end
-						until (not Disabler.Enabled)
-					end)
-				end
-			end
-		})
-	end)
-
 runFunction(function()
     local transparency2 = 0.5
     local transparent
@@ -10826,5 +10790,95 @@ STPD = SkyTP.CreateSlider({
     ["Function"] = function(val) end,
     ["Default"] = 196
 })
+
+runFunction(function()
+	PurpleHealthBar = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		Name = "PurpleHealthBar",
+		Function = function(callback)
+			if callback then 
+				debug.setconstant(require(lplr.PlayerScripts.TS.controllers.global.hotbar.ui.healthbar["hotbar-healthbar"]).HotbarHealthbar.render, 16, 9662683)
+			end
+		end
+	})
+end)
+
+runFunction(function()
+	local transformed = false
+	local GameThemeV2 = {["Enabled"] = false}
+	local themeselected = {["Value"] = "OldBedwars"}
+
+	local themefunctions = {
+		GalaxySky = function() 
+			task.spawn(function()
+				game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
+				game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
+				game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
+				game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
+				game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
+				game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
+			end)
+		end,
+        PinkMountainSky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=160188495"
+                game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=160188614"
+                game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=160188609"
+                game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=160188589"
+                game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=160188597"
+                game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=160188588"
+			end)
+		end,
+        CitySky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "rbxassetid://11263062161"
+                game.Lighting.Sky.SkyboxDn = "rbxassetid://11263065295"
+                game.Lighting.Sky.SkyboxFt = "rbxassetid://11263066644"
+                game.Lighting.Sky.SkyboxLf = "rbxassetid://11263068413"
+                game.Lighting.Sky.SkyboxRt = "rbxassetid://11263069782"
+                game.Lighting.Sky.SkyboxUp = "rbxassetid://11263070890"
+				game.Lighting.sky.SunTextureId = "rbxassetid://6196665106"
+				game.Lighting.sky.SunAngularSize = 4
+				game.Lighting.sky.MoonTextureId = "rbxassetid://8139665943"
+				game.Lighting.sky.MoonAngularSize = 11
+				lightingService.Atmosphere.Color = Color3.fromRGB(255, 214, 172)
+				lightingService.Atmosphere.Decay = Color3.fromRGB(255, 202, 175)
+			end)
+		end,
+        PinkSky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+                game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+                game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+                game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+                game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+                game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+			end)
+		end
+	}
+
+	GameThemeV2 = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		["Name"] = "GameThemeV2",
+		["Function"] = function(callback) 
+			if callback then 
+				if not transformed then
+					transformed = true
+					themefunctions[themeselected["Value"]]()
+				else
+					GameThemeV2["ToggleButton"](false)
+				end
+			else
+				CreateNotification("GameTheme", "Disabled Next Game", 10)
+			end
+		end,
+		["ExtraText"] = function()
+			return themeselected["Value"]
+		end
+	})
+	themeselected = GameThemeV2.CreateDropdown({
+		["Name"] = "Theme",
+		["Function"] = function() end,
+		["List"] = {"galaxy", "PinkMountainSky", "CitySky", "PinkSky"}
+	})
+end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/hi/main/chattag", true))()
