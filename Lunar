@@ -10925,7 +10925,7 @@ runcode(function()
 	local part
 	local cam = workspace.CurrentCamera
     funnyFly = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "FlyV2",
+        ["Name"] = "FunnyFly",
         ["Function"] = function(callback)
             if callback then
                 if funnyAura.Enabled then funnyAura.ToggleButton(false) end
