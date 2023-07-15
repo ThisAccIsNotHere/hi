@@ -10857,7 +10857,7 @@ runFunction(function()
 	}
 
 	GameThemeV2 = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		["Name"] = "GameThemeV3",
+		["Name"] = "GameThemeV2",
 		["Function"] = function(callback) 
 			if callback then 
 				if not transformed then
@@ -10877,7 +10877,7 @@ runFunction(function()
 	themeselected = GameThemeV2.CreateDropdown({
 		["Name"] = "Theme",
 		["Function"] = function() end,
-		["List"] = {"galaxyv2", "PinkMountainSkyv2", "CitySkyv2", "PinkSkyv2"}
+		["List"] = {"galaxyv2", "PinkMountainSky", "CitySky", "PinkSky"}
 	})
 end)
 
