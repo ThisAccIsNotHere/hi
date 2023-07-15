@@ -10917,15 +10917,15 @@ runFunction(function()
     })
 end)
 
-local flyv2 = {["Enabled"] = false}
+local funnyFly = {["Enabled"] = false}
 local funnyAura = {["Enabled"] = false}
 
-runFunction(function()
-	local flyv2
+runcode(function()
+	local funnyFly 
 	local part
 	local cam = workspace.CurrentCamera
-    flyv2 = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "flyv2",
+    funnyFly = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "FlyV2",
         ["Function"] = function(callback)
             if callback then
                 if funnyAura.Enabled then funnyAura.ToggleButton(false) end
@@ -10936,7 +10936,7 @@ runFunction(function()
                 part.Anchored = true
                 part.CanCollide = false
                 cam.CameraSubject = part
-                RunLoops:BindToHeartbeat("flyv2Part", 1, function()
+                RunLoops:BindToHeartbeat("FunnyFlyPart", 1, function()
                     local pos = entity.character.HumanoidRootPart.Position
                     part.Position = Vector3.new(pos.x, origy, pos.z)
                 end)
@@ -10946,7 +10946,7 @@ runFunction(function()
                     entity.character.HumanoidRootPart.CFrame *= CFrame.new(0, 100000, 0)
                 end
             else
-                RunLoops:UnbindFromHeartbeat("flyv2Part")
+                RunLoops:UnbindFromHeartbeat("FunnyFlyPart")
                 local pos = entity.character.HumanoidRootPart.Position
                 local rcparams = RaycastParams.new()
                 rcparams.FilterType = Enum.RaycastFilterType.Whitelist
@@ -10957,12 +10957,12 @@ runFunction(function()
                 end
                 cam.CameraSubject = lplr.Character
                 part:Destroy()
-                RunLoops:BindToHeartbeat("flyv2VeloEnd", 1, function()
+                RunLoops:BindToHeartbeat("FunnyFlyVeloEnd", 1, function()
                     entity.character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
                     entity.character.HumanoidRootPart.CFrame = CFrame.new(rc.Position) * CFrame.new(0,3,0)
                 end)
                 task.wait(1)
-                RunLoops:UnbindFromHeartbeat("flyv2VeloEnd")
+                RunLoops:UnbindFromHeartbeat("FunnyFlyVeloEnd")
                 
             end
         end
