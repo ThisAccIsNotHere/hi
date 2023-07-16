@@ -3604,6 +3604,27 @@ runFunction(function()
 				{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(-math.rad(190), math.rad(110), -math.rad(90)), Time = 0.3},
 				{CFrame = CFrame.new(0.3, -2, 2) * CFrame.Angles(math.rad(120), math.rad(140), math.rad(320)), Time = 0.3}
 		},
+                Attack1 = {
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(90), math.rad(0), math.rad(0)), Time = 0.2},
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-90), math.rad(0), math.rad(0)), Time = 0.2}
+                },
+                Attack2 = {
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-45), math.rad(45), math.rad(0)), Time = 0.2},
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(45), math.rad(-45), math.rad(0)), Time = 0.2}
+                },
+                Attack3 = {
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(-45), math.rad(0)), Time = 0.15},
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(45), math.rad(0)), Time = 0.15}
+                },
+                Attack4 = {
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.1},
+                       {CFrame = CFrame.new(0, 0, 2) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.1},
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), Time = 0.1}
+                },
+                Attack5 = {
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(90), math.rad(90), math.rad(0)), Time = 0.2},
+                       {CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-90), math.rad(90), math.rad(0)), Time = 0.2}
+                },
 		["Exhibition Old"] = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.15},
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.05},
