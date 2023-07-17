@@ -10729,7 +10729,7 @@ runFunction(function()
         end
     end
     BedTp = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-        Name = "BedTp Lamo",
+        Name = "Lunar's Bedtp",
         Function = function(callback)
             if callback then
                 lplr.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
@@ -10898,7 +10898,7 @@ runFunction(function()
 	themeselected = GameThemeV2.CreateDropdown({
 		["Name"] = "Theme",
 		["Function"] = function() end,
-		["List"] = {"galaxyv2", "PinkMountainSky", "CitySky", "PinkSky"}
+		["List"] = {"galaxyv2", "PinkMountainSky by Lunar", "CitySky by Lunar", "PinkSky by Lunar"}
 	})
 end)
 
